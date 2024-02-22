@@ -24,6 +24,8 @@ import {MarkGithubIcon} from '@primer/octicons-react'
 import { useEffect, useState } from "react";
 import { fetchRepoData, checkRepoData } from "../utils/requestHandler";
 
+const repoSnifferGifLink = "https://media.giphy.com/media/hVa6t0WpoDOk7Pxb7l/giphy.gif";
+
 // field to enter 
 function SearchRepo({ param, setParam, setShowEditor }) {
   const [isSearchHappened, setIsSearchHappened] = useState(false);
@@ -55,6 +57,14 @@ function SearchRepo({ param, setParam, setShowEditor }) {
       setParam(queryVar);
       setIsSearchHappened(true);
       setShowEditor(true);
+
+      // // Update visited repos
+      // const newVisitedRepos = [...visitedRepos, searchQuery];
+      // console.log("New Visited Repos:", newVisitedRepos);
+      // setVisitedRepos(newVisitedRepos.slice(-5)); // Keep only the latest 5 repos
+
+      // // Save visited repos to localStorage
+      // localStorage.setItem("visitedRepos", JSON.stringify(newVisitedRepos));
     }
   }
 
@@ -68,7 +78,7 @@ function SearchRepo({ param, setParam, setShowEditor }) {
         <Box width="50%">
         <form onSubmit={handleSubmit}>
           <FormControl>
-            <FormControl.Label sx={{fontSize: "18px"}}>Enter Github Repo Link</FormControl.Label>
+            <FormControl.Label sx={{fontSize: "18px"}}>Enter Github Repo URL</FormControl.Label>
             <TextInput
               monospace
               size="large"
@@ -94,26 +104,30 @@ function SearchRepo({ param, setParam, setShowEditor }) {
 }
 
 export default function LandingPage({ param, setParam, setShowEditor }) {
+  // const [visitedRepos, setVisitedRepos] = useState(() => {
+  //   const storedRepos = localStorage.getItem("visitedRepos");
+  //   return storedRepos ? JSON.parse(storedRepos) : [];
+  // });
+
+  // const handleRepoClick = (repo) => {
+  //   // You can implement the logic to handle a click on a specific repo
+  //   console.log("Clicked on repo:", repo);
+  // };
+
   return (
     <>
       <Box bg="canvas.default" width="100%" minHeight="100vh">
         <PageLayout width="100%">
           <PageLayout.Header>
             <Box sx={{p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-              <div>
-              <Text as="p" sx={{fontWeight: 'bold', fontSize: "25px"}}>
-                GitRead
+            <Heading sx={{fontSize: "30px", textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <img src={repoSnifferGifLink} alt="RepoSniffer GIF" style={{ width: '40px', marginRight: '10px' }} />
+                <Text as="p" sx={{fontWeight: 'bold', fontSize: "25px"}}>
+                RepoSniffer
               </Text>
-              </div>
-              <div>
-                <Link target="_blank" href="https://github.com/Roshan-Horo/gitread">
-                 <Avatar
-                  src="https://avatars.githubusercontent.com/github"
-                  size={30}
-                  alt="github link of repo"
-                />
-                </Link>
-              </div>
+              </Heading>
+              
+              
             </Box>
           </PageLayout.Header>
           <PageLayout.Content>
@@ -128,16 +142,43 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                 }}
               >
                 <Heading sx={{fontSize: "30px", textAlign: 'center'}}>
-                  Explore multiple GitHub repos
-                  <br/>
-                   in the world of open source
-                  effortlessly.
+                Effortlessly navigate through various GitHub repos
+                <br/>
+                 within the realm of open source exploration.
                 </Heading>
                 <SearchRepo
                   param={param}
                   setParam={setParam}
                   setShowEditor={setShowEditor}
+                  // visitedRepos={visitedRepos}
+                  // setVisitedRepos={setVisitedRepos}
                 />
+
+{/* <Button
+              variant="primary"
+              onClick={() => setShowEditor(true)} // Add logic to handle displaying your editor
+              sx={{ marginTop: "20px" }}
+            >
+              Explore
+            </Button>
+            {visitedRepos.length > 0 && (
+              <ActionMenu>
+                <ActionMenu.Button>Your Previous Visited Repos</ActionMenu.Button>
+
+                <ActionMenu.Overlay>
+                  <ActionList>
+                    {visitedRepos.map((repo, index) => (
+                      <ActionList.Item
+                        key={index}
+                        onSelect={() => handleRepoClick(repo)}
+                      >
+                        {repo}
+                      </ActionList.Item>
+                    ))}
+                  </ActionList>
+                </ActionMenu.Overlay>
+              </ActionMenu>
+            )} */}
                 {/* <Button>Your Previous visited Repos</Button> */}
                 {/* <ActionMenu>
                   <ActionMenu.Button>Your previous visited repos</ActionMenu.Button>
@@ -146,7 +187,7 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                     <ActionList>
                       <ActionList.Item onSelect={event => console.log('New file')}>New file</ActionList.Item>
                       <ActionList.Item>Copy link</ActionList.Item>
-                      <ActionList.Item>Edit file</ActionList.Item>
+                      <A ̰ctionList.Item>Edit file</ActionList.Item>
                       <ActionList.Divider />
                       <ActionList.Item variant="danger">Delete file</ActionList.Item>
                     </ActionList>
