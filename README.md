@@ -18,7 +18,7 @@
 <h3 align="center">RepoSniffer</h3>
 
   <p align="center">
-    Say goodbye to the hassle of cloning repositories. 🙌 With RepoSniffer, save time, dive into code instantly!  🌐🕵️‍♂️. Wait!, there's more to it, it also provides the feature of 1-click deployment directly from your repository.
+    Say goodbye to the hassle of cloning repositories. 🙌 With RepoSniffer, save time, dive into code instantly!  🌐🕵️‍♂️. Wait! there's more to it, it also provides the feature of 1-click deployment directly from your repository.
     <br />
     <a href="https://github.com/KDTEC/RepoSniffer"><strong>Explore the docs »</strong></a>
     <br />
