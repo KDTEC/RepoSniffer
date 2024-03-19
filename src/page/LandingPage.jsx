@@ -27,7 +27,7 @@ import { fetchRepoData, checkRepoData } from "../utils/requestHandler";
 const repoSnifferGifLink = "https://media.giphy.com/media/hVa6t0WpoDOk7Pxb7l/giphy.gif";
 
 // field to enter 
-function SearchRepo({ param, setParam, setShowEditor }) {
+function SearchRepo({ param, setParam, setShowEditor, setSearchQuery }) {
   const [isSearchHappened, setIsSearchHappened] = useState(false);
 
   async function handleSubmit(event) {
@@ -38,6 +38,8 @@ function SearchRepo({ param, setParam, setShowEditor }) {
     const formData = new FormData(event.currentTarget);
     const fieldValues = Object.fromEntries(formData.entries());
     const searchQuery = fieldValues["github_link"];
+    //console.log("-----------------",searchQuery)
+    setSearchQuery(searchQuery);
     const owner = searchQuery.split("/")[3];
     const name = searchQuery.split("/")[4];
     const queryVar = {
@@ -57,7 +59,6 @@ function SearchRepo({ param, setParam, setShowEditor }) {
       setParam(queryVar);
       setIsSearchHappened(true);
       setShowEditor(true);
-
       // // Update visited repos
       // const newVisitedRepos = [...visitedRepos, searchQuery];
       // console.log("New Visited Repos:", newVisitedRepos);
@@ -103,7 +104,7 @@ function SearchRepo({ param, setParam, setShowEditor }) {
   );
 }
 
-export default function LandingPage({ param, setParam, setShowEditor }) {
+export default function LandingPage({ param, setParam, setShowEditor, setSearchQuery }) {
   // const [visitedRepos, setVisitedRepos] = useState(() => {
   //   const storedRepos = localStorage.getItem("visitedRepos");
   //   return storedRepos ? JSON.parse(storedRepos) : [];
@@ -150,6 +151,7 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                   param={param}
                   setParam={setParam}
                   setShowEditor={setShowEditor}
+                  setSearchQuery={setSearchQuery}
                   // visitedRepos={visitedRepos}
                   // setVisitedRepos={setVisitedRepos}
                 />

@@ -16,17 +16,19 @@ function App() {
     branch: "",
   });
   const [showEditor, setShowEditor] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
         {showEditor ? (
-          <CodePage param={param} setShowEditor={setShowEditor} />
+          <CodePage searchQuery={searchQuery} param={param} setShowEditor={setShowEditor} />
         ) : (
           <LandingPage
             param={param}
             setParam={setParam}
             setShowEditor={setShowEditor}
+            setSearchQuery={setSearchQuery}
           />
         )}
         <ReactQueryDevtools initialIsOpen={false} />
