@@ -36,7 +36,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-This is a REST API backend for MetOps android application
+This is the homepage of the application.
 
 ### System design of the deployment module
 
