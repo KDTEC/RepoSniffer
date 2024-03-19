@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/KDTEC/RepoSniffer">
-    <img src="pics/cloud.png" alt="Logo" width="80" height="80">
+    <img src="pics/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">RepoSniffer</h3>
@@ -28,32 +28,6 @@
     <a href="https://github.com/KDTEC/RepoSniffer/issues">Report Bug</a>
   </p>
 </div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
 
 <br>
 
@@ -81,11 +55,10 @@ This module contains following services:
 
 ### Built With
 
-* [Python](https://www.python.org/)
-* [Django](https://www.djangoproject.com/)
-* [Django Rest Framework](https://www.django-rest-framework.org/)
-* [Meteomatics](https://www.meteomatics.com/en/)
-* [positionstack](https://positionstack.com/)
+* [ReactJS](https://react.dev/) - For the UI
+* [NodeJS](https://nodejs.org/en) - For the backend module
+* [AWS (ECR & ECS)](https://aws.amazon.com/) - For containerization
+* [Redis](https://redis.io/) - To PUBSUB the deployment logs to redis
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -136,13 +109,21 @@ The page will reload when you make changes.
 3. Setup the `api-server` by providing all the required config such as TASK ARN and CLUSTER arn.
 4. Run `node index.js` in `api-server` and `s3-reverse-proxy`
 5. Create a .env file in the repository folder with following parameters
-   - AWS credentials can be obtained from the AWS console
+   - AWS credentials can be obtained from the [AWS console](https://aws.amazon.com/)
    - For Redis I have used [Aiven](https://aiven.io/)
    ```env
    AWS_ACCESS_KEY_ID=''
-    AWS_SECRET_ACCESS_KEY=''
-    REDIS_URL=''
+   AWS_SECRET_ACCESS_KEY=''
+   REDIS_URL=''
    ```
+
+At this point following services would be up and running:
+
+| S.No | Service            | PORT    |
+| ---- | ------------------ | ------- |
+| 1    | `api-server`       | `:9000` |
+| 2    | `socket.io-server` | `:9001` |
+| 3    | `s3-reverse-proxy` | `:8000` |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
