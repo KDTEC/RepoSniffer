@@ -98,6 +98,12 @@ or if you installed dependencies using `npm` use below command
 ```
 npm run dev
 ```
+3. Create a .env.local file in the repository folder with following parameter
+   - Follow this [article](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to get your TOKEN
+```env
+VITE_GITHUB_TOKEN=''
+```
+
 It runs the app in development mode. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
 The page will reload when you make changes.
