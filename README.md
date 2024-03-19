@@ -132,7 +132,7 @@ At this point following services would be up and running:
 
 Kshitij Dhawan - kshitij.formal@gmail.com
 
-Project Link: [https://github.com/KDTEC/RepoSniffer](https://github.com/KDTEC/RepoSniffer)
+Project Link: [https://repo-sniffer.netlify.app](https://repo-sniffer.netlify.app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
